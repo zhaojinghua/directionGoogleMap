@@ -15,7 +15,7 @@
 
 
         var map = new google.maps.Map(document.getElementById('map_canvas'), {
-          zoom: 16,
+          zoom: 17,
           center: latLng,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
@@ -28,38 +28,12 @@
           map: map,
           optimized: false
         });
-
-
-        var label = new Label({
-          map: map
-        });
-        label.bindTo('position', marker);
-        label.bindTo('text', marker, 'position');
-        label.bindTo('visible', marker);
-        label.bindTo('clickable', marker);
-        label.bindTo('zIndex', marker);
-
-
         google.maps.event.addListener(marker, 'click', function() { alert('Marker has been clicked'); })
-        google.maps.event.addListener(label, 'click', function() { alert('Label has been clicked'); })
-      }
 
-
-      function showHideMarker() {
-        marker.setVisible(!marker.getVisible());
-      }
-
-
-      function pinUnpinMarker() {
-        var draggable = marker.getDraggable();
-        marker.setDraggable(!draggable);
-        marker.setClickable(!draggable);
       }
     </script>
   </head>
   <body onload="initialize()">
     <div id="map_canvas" style="height: 400px; width: 600px; margin: 200px auto 0px auto;"></div>
-    <button type="button" onclick="showHideMarker();">Show/Hide Marker</button>
-    <button type="button" onclick="pinUnpinMarker();">Pin/Unpin Marker</button>
   </body>
 </html>
